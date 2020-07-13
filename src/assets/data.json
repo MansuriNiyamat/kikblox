@@ -1,0 +1,724 @@
+﻿{
+    "Sheet1": [
+        {
+            "Iteams": "Rectagle X",
+            "Size": "10",
+            "Iteam 1": "1",
+            "Iteam 2": "1",
+            "Iteam 3": "2",
+            "Iteam 4": "4",
+            "Iteam 5": "6"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "20",
+            "Iteam 1": "2",
+            "Iteam 2": "2",
+            "Iteam 3": "4",
+            "Iteam 4": "8",
+            "Iteam 5": "12"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "30",
+            "Iteam 1": "3",
+            "Iteam 2": "3",
+            "Iteam 3": "6",
+            "Iteam 4": "12",
+            "Iteam 5": "18"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "40",
+            "Iteam 1": "4",
+            "Iteam 2": "4",
+            "Iteam 3": "8",
+            "Iteam 4": "16",
+            "Iteam 5": "24"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "50",
+            "Iteam 1": "5",
+            "Iteam 2": "5",
+            "Iteam 3": "10",
+            "Iteam 4": "20",
+            "Iteam 5": "30"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "60",
+            "Iteam 1": "6",
+            "Iteam 2": "6",
+            "Iteam 3": "12",
+            "Iteam 4": "24",
+            "Iteam 5": "36"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "70",
+            "Iteam 1": "7",
+            "Iteam 2": "7",
+            "Iteam 3": "14",
+            "Iteam 4": "28",
+            "Iteam 5": "42"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "80",
+            "Iteam 1": "8",
+            "Iteam 2": "8",
+            "Iteam 3": "16",
+            "Iteam 4": "32",
+            "Iteam 5": "48"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "90",
+            "Iteam 1": "9",
+            "Iteam 2": "9",
+            "Iteam 3": "18",
+            "Iteam 4": "36",
+            "Iteam 5": "54"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "100",
+            "Iteam 1": "10",
+            "Iteam 2": "10",
+            "Iteam 3": "20",
+            "Iteam 4": "40",
+            "Iteam 5": "60"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "110",
+            "Iteam 1": "11",
+            "Iteam 2": "11",
+            "Iteam 3": "22",
+            "Iteam 4": "44",
+            "Iteam 5": "66"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "120",
+            "Iteam 1": "12",
+            "Iteam 2": "12",
+            "Iteam 3": "24",
+            "Iteam 4": "48",
+            "Iteam 5": "72"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "130",
+            "Iteam 1": "13",
+            "Iteam 2": "13",
+            "Iteam 3": "26",
+            "Iteam 4": "52",
+            "Iteam 5": "78"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "140",
+            "Iteam 1": "14",
+            "Iteam 2": "14",
+            "Iteam 3": "28",
+            "Iteam 4": "56",
+            "Iteam 5": "84"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "150",
+            "Iteam 1": "15",
+            "Iteam 2": "15",
+            "Iteam 3": "30",
+            "Iteam 4": "60",
+            "Iteam 5": "90"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "160",
+            "Iteam 1": "16",
+            "Iteam 2": "16",
+            "Iteam 3": "32",
+            "Iteam 4": "64",
+            "Iteam 5": "96"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "170",
+            "Iteam 1": "17",
+            "Iteam 2": "17",
+            "Iteam 3": "34",
+            "Iteam 4": "68",
+            "Iteam 5": "102"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "180",
+            "Iteam 1": "18",
+            "Iteam 2": "18",
+            "Iteam 3": "36",
+            "Iteam 4": "72",
+            "Iteam 5": "108"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "190",
+            "Iteam 1": "19",
+            "Iteam 2": "19",
+            "Iteam 3": "38",
+            "Iteam 4": "76",
+            "Iteam 5": "114"
+        },
+        {
+            "Iteams": "Rectagle X",
+            "Size": "200",
+            "Iteam 1": "20",
+            "Iteam 2": "20",
+            "Iteam 3": "40",
+            "Iteam 4": "80",
+            "Iteam 5": "120"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "10",
+            "Iteam 1": "21",
+            "Iteam 2": "21",
+            "Iteam 3": "42",
+            "Iteam 4": "84",
+            "Iteam 5": "126"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "20",
+            "Iteam 1": "22",
+            "Iteam 2": "22",
+            "Iteam 3": "44",
+            "Iteam 4": "88",
+            "Iteam 5": "132"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "30",
+            "Iteam 1": "23",
+            "Iteam 2": "23",
+            "Iteam 3": "46",
+            "Iteam 4": "92",
+            "Iteam 5": "138"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "40",
+            "Iteam 1": "24",
+            "Iteam 2": "24",
+            "Iteam 3": "48",
+            "Iteam 4": "96",
+            "Iteam 5": "144"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "50",
+            "Iteam 1": "25",
+            "Iteam 2": "25",
+            "Iteam 3": "50",
+            "Iteam 4": "100",
+            "Iteam 5": "150"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "60",
+            "Iteam 1": "26",
+            "Iteam 2": "26",
+            "Iteam 3": "52",
+            "Iteam 4": "104",
+            "Iteam 5": "156"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "70",
+            "Iteam 1": "27",
+            "Iteam 2": "27",
+            "Iteam 3": "54",
+            "Iteam 4": "108",
+            "Iteam 5": "162"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "80",
+            "Iteam 1": "28",
+            "Iteam 2": "28",
+            "Iteam 3": "56",
+            "Iteam 4": "112",
+            "Iteam 5": "168"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "90",
+            "Iteam 1": "29",
+            "Iteam 2": "29",
+            "Iteam 3": "58",
+            "Iteam 4": "116",
+            "Iteam 5": "174"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "100",
+            "Iteam 1": "30",
+            "Iteam 2": "30",
+            "Iteam 3": "60",
+            "Iteam 4": "120",
+            "Iteam 5": "180"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "110",
+            "Iteam 1": "31",
+            "Iteam 2": "31",
+            "Iteam 3": "62",
+            "Iteam 4": "124",
+            "Iteam 5": "186"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "120",
+            "Iteam 1": "32",
+            "Iteam 2": "32",
+            "Iteam 3": "64",
+            "Iteam 4": "128",
+            "Iteam 5": "192"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "130",
+            "Iteam 1": "33",
+            "Iteam 2": "33",
+            "Iteam 3": "66",
+            "Iteam 4": "132",
+            "Iteam 5": "198"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "140",
+            "Iteam 1": "34",
+            "Iteam 2": "34",
+            "Iteam 3": "68",
+            "Iteam 4": "136",
+            "Iteam 5": "204"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "150",
+            "Iteam 1": "35",
+            "Iteam 2": "35",
+            "Iteam 3": "70",
+            "Iteam 4": "140",
+            "Iteam 5": "210"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "160",
+            "Iteam 1": "36",
+            "Iteam 2": "36",
+            "Iteam 3": "72",
+            "Iteam 4": "144",
+            "Iteam 5": "216"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "170",
+            "Iteam 1": "37",
+            "Iteam 2": "37",
+            "Iteam 3": "74",
+            "Iteam 4": "148",
+            "Iteam 5": "222"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "180",
+            "Iteam 1": "38",
+            "Iteam 2": "38",
+            "Iteam 3": "76",
+            "Iteam 4": "152",
+            "Iteam 5": "228"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "190",
+            "Iteam 1": "39",
+            "Iteam 2": "39",
+            "Iteam 3": "78",
+            "Iteam 4": "156",
+            "Iteam 5": "234"
+        },
+        {
+            "Iteams": "Rectagle Y",
+            "Size": "200",
+            "Iteam 1": "40",
+            "Iteam 2": "40",
+            "Iteam 3": "80",
+            "Iteam 4": "160",
+            "Iteam 5": "240"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "10",
+            "Iteam 1": "41",
+            "Iteam 2": "41",
+            "Iteam 3": "82",
+            "Iteam 4": "164",
+            "Iteam 5": "246"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "20",
+            "Iteam 1": "42",
+            "Iteam 2": "42",
+            "Iteam 3": "84",
+            "Iteam 4": "168",
+            "Iteam 5": "252"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "30",
+            "Iteam 1": "43",
+            "Iteam 2": "43",
+            "Iteam 3": "86",
+            "Iteam 4": "172",
+            "Iteam 5": "258"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "40",
+            "Iteam 1": "44",
+            "Iteam 2": "44",
+            "Iteam 3": "88",
+            "Iteam 4": "176",
+            "Iteam 5": "264"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "50",
+            "Iteam 1": "45",
+            "Iteam 2": "45",
+            "Iteam 3": "90",
+            "Iteam 4": "180",
+            "Iteam 5": "270"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "60",
+            "Iteam 1": "46",
+            "Iteam 2": "46",
+            "Iteam 3": "92",
+            "Iteam 4": "184",
+            "Iteam 5": "276"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "70",
+            "Iteam 1": "47",
+            "Iteam 2": "47",
+            "Iteam 3": "94",
+            "Iteam 4": "188",
+            "Iteam 5": "282"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "80",
+            "Iteam 1": "48",
+            "Iteam 2": "48",
+            "Iteam 3": "96",
+            "Iteam 4": "192",
+            "Iteam 5": "288"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "90",
+            "Iteam 1": "49",
+            "Iteam 2": "49",
+            "Iteam 3": "98",
+            "Iteam 4": "196",
+            "Iteam 5": "294"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "100",
+            "Iteam 1": "50",
+            "Iteam 2": "50",
+            "Iteam 3": "100",
+            "Iteam 4": "200",
+            "Iteam 5": "300"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "110",
+            "Iteam 1": "51",
+            "Iteam 2": "51",
+            "Iteam 3": "102",
+            "Iteam 4": "204",
+            "Iteam 5": "306"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "120",
+            "Iteam 1": "52",
+            "Iteam 2": "52",
+            "Iteam 3": "104",
+            "Iteam 4": "208",
+            "Iteam 5": "312"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "130",
+            "Iteam 1": "53",
+            "Iteam 2": "53",
+            "Iteam 3": "106",
+            "Iteam 4": "212",
+            "Iteam 5": "318"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "140",
+            "Iteam 1": "54",
+            "Iteam 2": "54",
+            "Iteam 3": "108",
+            "Iteam 4": "216",
+            "Iteam 5": "324"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "150",
+            "Iteam 1": "55",
+            "Iteam 2": "55",
+            "Iteam 3": "110",
+            "Iteam 4": "220",
+            "Iteam 5": "330"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "160",
+            "Iteam 1": "56",
+            "Iteam 2": "56",
+            "Iteam 3": "112",
+            "Iteam 4": "224",
+            "Iteam 5": "336"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "170",
+            "Iteam 1": "57",
+            "Iteam 2": "57",
+            "Iteam 3": "114",
+            "Iteam 4": "228",
+            "Iteam 5": "342"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "180",
+            "Iteam 1": "58",
+            "Iteam 2": "58",
+            "Iteam 3": "116",
+            "Iteam 4": "232",
+            "Iteam 5": "348"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "190",
+            "Iteam 1": "59",
+            "Iteam 2": "59",
+            "Iteam 3": "118",
+            "Iteam 4": "236",
+            "Iteam 5": "354"
+        },
+        {
+            "Iteams": "Square X",
+            "Size": "200",
+            "Iteam 1": "60",
+            "Iteam 2": "60",
+            "Iteam 3": "120",
+            "Iteam 4": "240",
+            "Iteam 5": "360"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "10",
+            "Iteam 1": "61",
+            "Iteam 2": "61",
+            "Iteam 3": "122",
+            "Iteam 4": "244",
+            "Iteam 5": "366"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "20",
+            "Iteam 1": "62",
+            "Iteam 2": "62",
+            "Iteam 3": "124",
+            "Iteam 4": "248",
+            "Iteam 5": "372"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "30",
+            "Iteam 1": "63",
+            "Iteam 2": "63",
+            "Iteam 3": "126",
+            "Iteam 4": "252",
+            "Iteam 5": "378"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "40",
+            "Iteam 1": "64",
+            "Iteam 2": "64",
+            "Iteam 3": "128",
+            "Iteam 4": "256",
+            "Iteam 5": "384"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "50",
+            "Iteam 1": "65",
+            "Iteam 2": "65",
+            "Iteam 3": "130",
+            "Iteam 4": "260",
+            "Iteam 5": "390"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "60",
+            "Iteam 1": "66",
+            "Iteam 2": "66",
+            "Iteam 3": "132",
+            "Iteam 4": "264",
+            "Iteam 5": "396"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "70",
+            "Iteam 1": "67",
+            "Iteam 2": "67",
+            "Iteam 3": "134",
+            "Iteam 4": "268",
+            "Iteam 5": "402"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "80",
+            "Iteam 1": "68",
+            "Iteam 2": "68",
+            "Iteam 3": "136",
+            "Iteam 4": "272",
+            "Iteam 5": "408"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "90",
+            "Iteam 1": "69",
+            "Iteam 2": "69",
+            "Iteam 3": "138",
+            "Iteam 4": "276",
+            "Iteam 5": "414"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "100",
+            "Iteam 1": "70",
+            "Iteam 2": "70",
+            "Iteam 3": "140",
+            "Iteam 4": "280",
+            "Iteam 5": "420"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "110",
+            "Iteam 1": "71",
+            "Iteam 2": "71",
+            "Iteam 3": "142",
+            "Iteam 4": "284",
+            "Iteam 5": "426"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "120",
+            "Iteam 1": "72",
+            "Iteam 2": "72",
+            "Iteam 3": "144",
+            "Iteam 4": "288",
+            "Iteam 5": "432"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "130",
+            "Iteam 1": "73",
+            "Iteam 2": "73",
+            "Iteam 3": "146",
+            "Iteam 4": "292",
+            "Iteam 5": "438"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "140",
+            "Iteam 1": "74",
+            "Iteam 2": "74",
+            "Iteam 3": "148",
+            "Iteam 4": "296",
+            "Iteam 5": "444"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "150",
+            "Iteam 1": "75",
+            "Iteam 2": "75",
+            "Iteam 3": "150",
+            "Iteam 4": "300",
+            "Iteam 5": "450"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "160",
+            "Iteam 1": "76",
+            "Iteam 2": "76",
+            "Iteam 3": "152",
+            "Iteam 4": "304",
+            "Iteam 5": "456"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "170",
+            "Iteam 1": "77",
+            "Iteam 2": "77",
+            "Iteam 3": "154",
+            "Iteam 4": "308",
+            "Iteam 5": "462"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "180",
+            "Iteam 1": "78",
+            "Iteam 2": "78",
+            "Iteam 3": "156",
+            "Iteam 4": "312",
+            "Iteam 5": "468"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "190",
+            "Iteam 1": "79",
+            "Iteam 2": "79",
+            "Iteam 3": "158",
+            "Iteam 4": "316",
+            "Iteam 5": "474"
+        },
+        {
+            "Iteams": "Square Y",
+            "Size": "200",
+            "Iteam 1": "80",
+            "Iteam 2": "80",
+            "Iteam 3": "160",
+            "Iteam 4": "320",
+            "Iteam 5": "480"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+<h1>GoJS / Angular - POC Sample</h1>
+<button (click)="calculate()">
+  Calculate
+</button>
+
+<div class="left">
+  Palette
+  <gojs-palette #myPalette [initPalette]='initPalette' [divClassName]='paletteDivClassName' [nodeDataArray]='paletteNodeData'
+    [linkDataArray]='paletteLinkData' [modelData]='paletteModelData' (modelChange)='paletteModelChange($event)'></gojs-palette>
+</div>
+
+
+
+<div class="left">
+  Diagram
+  <gojs-diagram #myDiagram [initDiagram]='initDiagram' [nodeDataArray]='diagramNodeData' [linkDataArray]='diagramLinkData'
+    [divClassName]='diagramDivClassName' [modelData]='diagramModelData' [skipsDiagramUpdate]='skipsDiagramUpdate'
+    (modelChange)='diagramModelChange($event)'>
+  </gojs-diagram>
+</div>
+
+<!-- <div class="left">
+  Overview
+  <gojs-overview #myOverview [initOverview]='initOverview' [divClassName]='oDivClassName' [observedDiagram]='observedDiagram'></gojs-overview>
+</div> -->
+
+
+<!-- <div class="left">
+  <app-inspector [selectedNode]='selectedNode' (onFormChange)='handleInspectorChange($event)'></app-inspector>
+</div>
+
+
+<div class="clear left box">
+  <h3>Links in app data</h3>
+  <ul>
+    <li *ngFor="let ld of diagramLinkData">
+      Link Key: {{ld.key}}, To: {{ld.to}}, From: {{ ld.from }}
+    </li>
+  </ul>
+</div>
+
+<div class="left box">
+  <h3>Nodes in app data</h3>
+  <ul>
+    <li *ngFor="let nd of diagramNodeData">
+      Node Key: {{nd.key}}, Color: {{nd.color}}
+    </li>
+  </ul>
+</div> -->
+

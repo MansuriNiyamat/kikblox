@@ -10,7 +10,7 @@ import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angula
     styleUrls: ['dialog.component.css'],
   })
   export class DialogComponent implements OnInit {
-
+    title = 'Calculation';
     displayedColumns: string[] = [];
     dataSource;
     filteredStates: Observable<any>;
@@ -22,10 +22,13 @@ import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angula
         const dialogConfig = new MatDialogConfig();
       //  this.dialogRef.disableClose = true;
         if(this.data.type === 'outerPanel') {
+          this.title = 'Outer Panel Calculation';
           this.displayedColumns = ['componentName', 'placement', 'width', 'height', 'component', 'busbar', 'total', 'qty'];
           this.dataSource = this.data.data;
 
         } else if(this.data.type === 'door') {
+          this.title = 'Inner Panel (Door) Calculation';
+
           this.displayedColumns = ['componentName', 'placement', 'width', 'height', 'total', 'qty'];
           this.dataSource = this.data.data;
 

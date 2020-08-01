@@ -1,4 +1,4 @@
-<h1>GoJS / Angular - POC Sample</h1>
+<!-- <h1>GoJS / Angular - POC Sample</h1>
 <button (click)="calculate()">
   Calculate
 </button>
@@ -17,7 +17,7 @@
     [divClassName]='diagramDivClassName' [modelData]='diagramModelData' [skipsDiagramUpdate]='skipsDiagramUpdate'
     (modelChange)='diagramModelChange($event)'>
   </gojs-diagram>
-</div>
+</div> -->
 
 <!-- <div class="left">
   Overview
@@ -25,26 +25,28 @@
 </div> -->
 
 
-<!-- <div class="left">
-  <app-inspector [selectedNode]='selectedNode' (onFormChange)='handleInspectorChange($event)'></app-inspector>
+
+
+<mat-toolbar class="toolbar" color="primary">
+  <!-- <span class="example-spacer"></span> -->
+  <!-- <img alt="Home" height="63" width="60" style="margin-top: 8px" src="assets/whiteLogo.png" title="Home"  > -->
+
+  <span class="">Kikblox Prototype</span>
+  <span class="example-spacer"></span>
+
+  <mat-nav-list>
+    <a mat-button   [routerLink]="'/drawing'">
+      <span class="nav-caption">Drawing</span>
+    </a>
+ 
+  </mat-nav-list>
+</mat-toolbar>
+<!-- <mat-toolbar class="toolbarMenu" color="primary">
+
+</mat-toolbar> -->
+<div class="bodyContainer">
+  <router-outlet> </router-outlet>
 </div>
 
 
-<div class="clear left box">
-  <h3>Links in app data</h3>
-  <ul>
-    <li *ngFor="let ld of diagramLinkData">
-      Link Key: {{ld.key}}, To: {{ld.to}}, From: {{ ld.from }}
-    </li>
-  </ul>
-</div>
-
-<div class="left box">
-  <h3>Nodes in app data</h3>
-  <ul>
-    <li *ngFor="let nd of diagramNodeData">
-      Node Key: {{nd.key}}, Color: {{nd.color}}
-    </li>
-  </ul>
-</div> -->
 

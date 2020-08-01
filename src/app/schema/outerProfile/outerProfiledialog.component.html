@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Outer plate {{data.key}} options</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Position Column -->
+     
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="option">
+          <mat-header-cell *matHeaderCellDef> Options </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.option}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="depth">
+          <mat-header-cell *matHeaderCellDef> Component Depth </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.depth}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="busbar">
+            <mat-header-cell *matHeaderCellDef> Busbar Chamber </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.busbar}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="total">
+            <mat-header-cell *matHeaderCellDef> Total Depth </mat-header-cell> 
+            <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="select">
+            <mat-header-cell *matHeaderCellDef> Select </mat-header-cell>
+            <mat-cell *matCellDef="let element; let i = index;"> <button (click)="depthSelect(element)" mat-raised-button color="primary">Select</button> </mat-cell>
+          </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+     
+
+</mat-dialog-content>
+ <label >Side Cover </label>
+<mat-radio-group class="example-radio-group" aria-label='Select an option' [(ngModel)]="side" required (change)="sideChange($event)">
+  <mat-radio-button class="example-radio-button" name='sideCover' value='cover'>Cover</mat-radio-button>
+  <mat-radio-button class="example-radio-button" name='sideCover' value='door'>Door</mat-radio-button>
+  <mat-radio-button class="example-radio-button" name='sideCover' value='single'>Single</mat-radio-button>
+</mat-radio-group>
+
+
+<label >Top Cover </label>
+<mat-radio-group class="example-radio-group" aria-label='Select an option' [(ngModel)]="top" required (change)="topChange($event)">
+  <mat-radio-button class="example-radio-button" name='topCover' value='cover'>Cover</mat-radio-button>
+  <mat-radio-button class="example-radio-button" name='topCover' value='door'>Door</mat-radio-button>
+  <mat-radio-button class="example-radio-button" name='topCover' value='single'>Single</mat-radio-button>
+</mat-radio-group>
+
+
+<label >Back Cover </label>
+<mat-radio-group class="example-radio-group" aria-label='Select an option' [(ngModel)]="back" required (change)="backChange($event)">
+  <mat-radio-button class="example-radio-button" name='backCover' value='cover'>Cover</mat-radio-button>
+  <mat-radio-button class="example-radio-button" name='backCover' value='door'>Door</mat-radio-button>
+  <mat-radio-button class="example-radio-button" name='backCover' value='single'>Single</mat-radio-button>
+</mat-radio-group>
+<mat-dialog-actions align="end">
+    <button (click)="apply()" [mat-dialog-close]="selectedOptions" mat-raised-button >Apply</button>
+    <button (click)="cancel()" mat-raised-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

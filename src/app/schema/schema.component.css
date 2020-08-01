@@ -1,0 +1,130 @@
+.diagram {
+  height: 95%;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  position: absolute;
+  top:5%;
+ }
+ 
+.bodyContainer1 {
+  position: absolute;
+  height: 97.5%;
+  width: 100%; 
+}
+.myDiagramDiv {
+ 
+  width: 100%;
+  height: 100%;
+}
+
+.myPaletteDiv {
+ 
+
+  width: 100%;
+  height: 100%
+}
+a:hover, a:active{
+  background-color:white !important;
+  color: #1A5788;
+}
+.myOverviewDiv {
+  width: 100%;
+  height: 100%;
+}
+
+mat-nav-list {
+  margin: 0 16px 0 50px;
+}
+.box {
+  border: solid 1px black;
+  background: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+
+.form-element {
+  padding: 5px 0px 5px 2px;
+  width: 100%;
+}
+
+.paletteDiv {
+  width: 100%;
+  height: 100%;
+ 
+}
+.overViewDiv {
+  position: absolute;
+  width: 98%;
+  height: 23%;
+  top: 77%;
+  left: 1%;
+  background-color: aliceblue;
+  z-index: 300;
+  border: dashed 1px#79589f;
+  cursor:zoom-in;
+}
+ 
+.diagramDiv {
+  width: 100%;
+  height: 100%;
+ border: 1px dashed black; 
+}
+
+.infoDiv {
+  width: 100%;
+  height: 100%;
+ 
+ 
+}
+
+
+.toolbarSec{
+  position: fixed;
+  z-index: 11;
+  border-bottom: 0.1vh solid #a399ad; 
+  background-color: #1A5788 !important;
+  height: 37px !important;
+  font-size: 14px;
+}
+.example-icon {
+  cursor: pointer;
+}
+.example-icon-dis {
+  padding: 0 20px;
+  cursor: no-drop;
+  color:#A9A9A9;
+}
+.example-spacer { 
+  
+  flex: 1 1 auto;
+}
+.file-upload-palette {
+  display: none;
+}
+.file-upload-diagram {
+  display: none;
+}
+.example-icon :hover {
+  cursor: no-drop;
+}
+.example-button 
+{
+  
+  margin-left: 15px;
+  padding-left: 15px;
+}
+
+
+
+
+

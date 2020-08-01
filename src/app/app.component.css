@@ -6,8 +6,8 @@ body {
 
 .myDiagramDiv {
   background: whitesmoke;
-  width: 1000px;
-  height: 500px;
+  width: 1200px;
+  height: 630px;
   border: 1px solid black;
 }
 
@@ -15,7 +15,7 @@ body {
   background: lightcyan;
   border: 1px solid navy;
   width: 200px;
-  height: 500px;
+  height: 630px;
 }
 
 .myOverviewDiv {
@@ -40,3 +40,90 @@ body {
 .clear {
   clear: both;
 }
+
+
+
+
+
+
+.home {
+ cursor: pointer;
+    padding: 21px 0;
+    margin: 0 16px 0 50px;
+} 
+
+.box {
+  border: solid 1px black;
+  background: whitesmoke;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.clear {
+  clear: both;
+}
+.toolbar{
+  position: fixed;
+  z-index: 2;
+  background-color:#00457C ; 
+  height: 55px;
+  color: white;
+}
+.toolbarMenu{
+  position: fixed;
+  z-index: 1;
+  background-color: #1A5788;
+  height: 4.5vh;
+  color: white;
+}
+
+.sidenavRight {
+  width: 300px;  
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+.mainPanel {
+  width:100%;
+  white-space:nowrap;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-button-row{
+  margin-right: 5vw; 
+}
+.bodyContainer {
+  position: absolute;
+  height: 92%;
+
+  width: 100%; 
+}
+
+a{
+  text-decoration: none;
+  color: white;
+ }
+ 
+ a:hover{
+  color: #1A5788;
+  background-color: white;
+ }
+ a:focus{
+  color: #1A5788;
+    background-color: white;
+ }
+ a:active{
+  color: #1A5788;
+    background-color: white;
+ }
+
+.nav-caption{
+    display: inline-block;
+}
+mat-nav-list {
+  margin: 0 16px 0 50px;
+}
+
+

@@ -1,0 +1,103 @@
+<h2 mat-dialog-title>JSON Data to store in DB</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Outer Layout Column -->
+        <ng-container matColumnDef="componentName">
+          <mat-header-cell *matHeaderCellDef> Component Name </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.componentName}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="placement">
+          <mat-header-cell *matHeaderCellDef> Placement </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.placement}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="width">
+          <mat-header-cell *matHeaderCellDef> Width </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.width}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="height">
+          <mat-header-cell *matHeaderCellDef> Height </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.height}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="component">
+          <mat-header-cell *matHeaderCellDef> Component </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.component}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="busbar">
+          <mat-header-cell *matHeaderCellDef> Busbar </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.busbar}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.total}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qty">
+          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{element.qty}} </mat-cell>
+        </ng-container>
+
+
+
+
+
+
+
+        <!-- Calculation Column -->
+        <ng-container matColumnDef="no">
+          <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+          <mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="item">
+          <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.item}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="x">
+          <mat-header-cell *matHeaderCellDef> X </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.x}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="y">
+            <mat-header-cell *matHeaderCellDef> Y </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.y}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="item1">
+            <mat-header-cell *matHeaderCellDef> Item 1 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.item1}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="item2">
+            <mat-header-cell *matHeaderCellDef> Item 2 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.item2}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="item3">
+            <mat-header-cell *matHeaderCellDef> Item 3 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.item3}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="item4">
+            <mat-header-cell *matHeaderCellDef> Item 4 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.item4}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="item5">
+            <mat-header-cell *matHeaderCellDef> Item 5 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.item5}} </mat-cell>
+          </ng-container>
+
+        
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button (click)="cancel()" mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

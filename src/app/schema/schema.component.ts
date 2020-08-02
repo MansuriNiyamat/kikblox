@@ -50,7 +50,7 @@ export class SchemaComponent implements AfterViewInit {
   public paletteNodeData: Array<go.ObjectData> = [
     { uuid: '4279ceba1dad', text: 'Door', color: '#B2FF59', size: '100 100', type: 'square', category: 'door' },
     { uuid: '2541ceba1dad', text: 'Cover', color: '#81D4FA', size: '100 200', type: 'rectangle' },
-    { uuid: '3514ceba1dad', text: 'Outer Profile', color: '#81D4FA', isGroup: true, size: '500 1000', type: 'rectangle', category: 'outerProfile' },
+    { uuid: '3514ceba1dad', text: 'Outer Profile', color: '#81D4FA', isGroup: true, size: '500 1000', type: 'rectangle', category: 'outerProfile', selectedOption: null },
   ];
 
   public paletteLinkData: Array<go.ObjectData> = [
@@ -601,17 +601,20 @@ export class SchemaComponent implements AfterViewInit {
       const group =  this.myDiagramComponent.diagram.findNodeForKey(this.doorSelectionFlag.group);
       const size = this.doorSelectionFlag.size.split(' ');
       const selectedOpt = group.data.selectedOption;
+      let compoDepth;
+      if(selectedOpt){
+        compoDepth = selectedOpt.option.depth;
+      }
       outerTable.push(
         { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '', total: '', qty: 2},
         { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' , total: '', qty: 4},
-        { componentName: 'Inner Profile D', placement: 'Inner Profile', width: selectedOpt.option.total, height: '', total: '', qty: 2},
+        { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '', total: '', qty: 2},
         { componentName: 'Door', placement: 'Door', width: size[0], height: size[1], total: '', qty: 1},
-        { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: selectedOpt.option.total, total: '', qty: 2},
-        { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: selectedOpt.option.total, total: '', qty: 2},
-        { componentName: 'Mounting Plate', placement: 'MOunting Plate', width: selectedOpt.option.total, height: '', total: '', qty: 1},
+        { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, total: '', qty: 2},
+        { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, total: '', qty: 2},
+        { componentName: 'Mounting Plate', placement: 'MOunting Plate', width: compoDepth, height: '', total: '', qty: 1},
         { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], total: '', qty: ''},
       );
-      
       const dialogRef = this.dialog.open(DialogComponent, {
         data: {type: 'door', data: outerTable},
         width: '70em',

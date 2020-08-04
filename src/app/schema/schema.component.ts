@@ -47,9 +47,10 @@ export class SchemaComponent implements AfterViewInit {
   public diagramModelData = { prop: 'value' };
   public skipsDiagramUpdate = false;
 
+
   public paletteNodeData: Array<go.ObjectData> = [
-    { uuid: '4279ceba1dad', text: 'Door', color: '#B2FF59', size: '100 100', type: 'square', category: 'door' },
-    { uuid: '2541ceba1dad', text: 'Cover', color: '#81D4FA', size: '100 200', type: 'rectangle' },
+    { uuid: '4279ceba1dad', text: 'Door', color: '#eeebe1', size: '200 200', type: 'square', category: 'door' },
+  //  { uuid: '2541ceba1dad', text: 'Cover', color: '#81D4FA', size: '100 200', type: 'rectangle' },
     { uuid: '3514ceba1dad', text: 'Outer Profile', color: '#81D4FA', isGroup: true, size: '500 1000', type: 'rectangle', category: 'outerProfile', selectedOption: null },
   ];
 
@@ -122,7 +123,9 @@ export class SchemaComponent implements AfterViewInit {
       grp.isHighlighted = show && grp.canAddMembers(tool.draggingParts);
       return grp.isHighlighted;
     }
-
+   const img = new Image(1000, 1000);
+    img.src = 'assets/door2.jpg';
+   const patternBrush = $(go.Brush, 'Pattern', { pattern: img });
 
     // define the Node template
     dia.nodeTemplate =
@@ -151,11 +154,12 @@ export class SchemaComponent implements AfterViewInit {
         $(go.Shape, 'Rectangle',
           {
             name: 'SHAPE',
-            fill: 'white',
+            fill: patternBrush,
             minSize: new go.Size(100, 100),
-            desiredSize: new go.Size(100, 100)  // initially 1x1 cell
+            desiredSize: new go.Size(100, 100),  // initially 1x1 cell
+            strokeWidth: 7
           },
-          new go.Binding('fill', 'color'),
+         // new go.Binding('fill', 'color'),
           new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)),
         // with the textual key in the middle
         $(go.TextBlock,

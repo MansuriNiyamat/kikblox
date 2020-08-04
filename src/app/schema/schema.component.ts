@@ -111,7 +111,7 @@ export class SchemaComponent implements AfterViewInit {
     dia.undoManager.isEnabled = true;
     dia.toolManager.draggingTool.isGridSnapEnabled = true;
     dia.toolManager.draggingTool.gridSnapCellSpot = go.Spot.Center;
-    dia.initialScale = 0.5;
+    dia.initialScale = 0.2;
     dia.toolManager.resizingTool.isGridSnapEnabled = true;
     dia.animationManager.isEnabled = true;
     dia.commandHandler.archetypeGroupData = { uuid: 'Group', isGroup: true };

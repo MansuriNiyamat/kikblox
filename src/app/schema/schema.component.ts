@@ -137,7 +137,7 @@ export class SchemaComponent implements AfterViewInit {
           // provide a visual warning about dropping anything onto an "item"
           mouseDragEnter: (e, node: any) => {
             e.handled = true;
-            node.findObject('SHAPE').fill = 'red';
+           // node.findObject('SHAPE').fill = 'red';
             e.diagram.currentCursor = 'not-allowed';
             highlightGroup(node.containingGroup, false);
           },

@@ -4,14 +4,13 @@ import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import { InspectorComponent } from './inspector/inspector.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DialogComponent} from './dialog/dialog.component';
 import {CommonSharedModule} from './shared/index';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InspectorComponent,
-    DialogComponent,
+    InspectorComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -20,7 +19,7 @@ import {CommonSharedModule} from './shared/index';
     AppRoutingModule
   ],
   entryComponents: [
-    DialogComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

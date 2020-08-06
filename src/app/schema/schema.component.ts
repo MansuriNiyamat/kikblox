@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { OuterProfiledialogComponent } from './outerProfile/outerProfiledialog.component';
-
+import {JSONDialogComponent} from './jsondialog/dialog.component';
 import { SchemaService } from './service/schema.service';
 
 @Component({
@@ -739,17 +739,17 @@ export class SchemaComponent implements AfterViewInit {
         const size = element.size.split(' ');
         const selectedOpt = element.selectedOption;
         outerTable.push(
-        { componentName: 'Outer Profile', placement: '', width: size[0], height: '', component: '', busbar: '', total: '', qty: 4},
-        { componentName: 'Outer Profile', placement: '', width: '', height: size[1], component: '', busbar: '', total: '', qty: 4},
-        { componentName: 'Outer Profile - Depth', placement: '', width: '', height: '', component: '', busbar: '', total: selectedOpt.option.total, qty: 4},
-        { componentName: 'Plinth Width', placement: '', width: size[0], height: '', component: '', busbar: '', total: '', qty: 2},
-        { componentName: 'Plinth Depth', placement: '', width: '', height: '', component: '', busbar: '', total: selectedOpt.option.total, qty: 2},
-        { componentName: 'Door', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
-        { componentName: 'Door', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
-        { componentName: 'Cover', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
-        { componentName: 'Cover', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
-        { componentName: 'Axial Corner Module', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 8},
-        { componentName: 'Allen Bolts and Nuts(M8*20)', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 4},
+        {name : element.text, componentName: 'Outer Profile', placement: '', width: size[0], height: '', component: '', busbar: '', total: '', qty: 4},
+        {name : element.text, componentName: 'Outer Profile', placement: '', width: '', height: size[1], component: '', busbar: '', total: '', qty: 4},
+        {name : element.text, componentName: 'Outer Profile - Depth', placement: '', width: '', height: '', component: '', busbar: '', total: selectedOpt.option.total, qty: 4},
+        {name : element.text, componentName: 'Plinth Width', placement: '', width: size[0], height: '', component: '', busbar: '', total: '', qty: 2},
+        {name : element.text, componentName: 'Plinth Depth', placement: '', width: '', height: '', component: '', busbar: '', total: selectedOpt.option.total, qty: 2},
+        { name : element.text,componentName: 'Door', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
+        {name : element.text, componentName: 'Door', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
+        {name : element.text, componentName: 'Cover', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
+        {name : element.text, componentName: 'Cover', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 2},
+        {name : element.text, componentName: 'Axial Corner Module', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 8},
+        {name : element.text, componentName: 'Allen Bolts and Nuts(M8*20)', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 4},
       );
       } else if(element.category === 'door') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
@@ -760,14 +760,14 @@ export class SchemaComponent implements AfterViewInit {
           compoDepth = selectedOpt.option.depth;
         }
         outerTable.push(
-          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
-          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Door', placement: 'Door', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
-          { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Mounting Plate', placement: 'MOunting Plate', width: compoDepth, height: '', component: '', busbar: '', total: '', qty: 1},
-          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+          {name : element.text, componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          { name : element.text,componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Door', placement: 'Door', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          {name : element.text, componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { name : element.text,componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Mounting Plate', placement: 'MOunting Plate', width: compoDepth, height: '', component: '', busbar: '', total: '', qty: 1},
+          {name : element.text, componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
         );
       } else if(element.category === 'cover') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
@@ -778,11 +778,11 @@ export class SchemaComponent implements AfterViewInit {
           compoDepth = selectedOpt.option.depth;
         }
         outerTable.push(
-          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
-          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Cover', placement: 'Cover', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
-          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+          {name : element.text, componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          {name : element.text, componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Cover', placement: 'Cover', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          {name : element.text, componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
         );
       } else if(element.category === 'cableChamber') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
@@ -793,13 +793,13 @@ export class SchemaComponent implements AfterViewInit {
           compoDepth = selectedOpt.option.depth;
         }
         outerTable.push(
-          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
-          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Cable Chamber', placement: '', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
-          { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+          {name : element.text, componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          {name : element.text, componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Cable Chamber', placement: '', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          {name : element.text, componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
         );
       } else if(element.category === 'coverwithlouver') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
@@ -810,13 +810,13 @@ export class SchemaComponent implements AfterViewInit {
           compoDepth = selectedOpt.option.depth;
         }
         outerTable.push(
-          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
-          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Cover with Louver', placement: '', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
-          { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
-          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+          {name : element.text, componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          {name : element.text, componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          {name :element.text, componentName: 'Cover with Louver', placement: '', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          {name : element.text, componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          {name : element.text, componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
         );
       }
     });
@@ -831,7 +831,16 @@ export class SchemaComponent implements AfterViewInit {
       });
   }
 
-
+  save() {
+    const dialogRef = this.dialog.open(JSONDialogComponent, {
+      data: this.myDiagramComponent.diagram.model.toJson(),
+      width: '50em',
+      height: '30em'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
   doorCalc() {
     if (this.doorSelectionFlag) {
       let outerTable = [];

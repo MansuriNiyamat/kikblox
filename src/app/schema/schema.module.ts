@@ -5,12 +5,14 @@ import { SchemaService } from './service/schema.service';
 import { SchemaComponent } from './schema.component';
 import {OuterProfiledialogComponent} from './outerProfile/outerProfiledialog.component';
 import {DialogComponent} from './dialog/dialog.component';
+import {JSONDialogComponent} from './jsondialog/dialog.component';
 
 @NgModule({
   declarations: [
     SchemaComponent,
     OuterProfiledialogComponent,
-    DialogComponent
+    DialogComponent,
+    JSONDialogComponent
   ],
   imports: [
     CommonSharedModule,
@@ -21,7 +23,8 @@ import {DialogComponent} from './dialog/dialog.component';
   ],
   entryComponents: [
     OuterProfiledialogComponent,
-    DialogComponent
+    DialogComponent,
+    JSONDialogComponent
   ],
   providers: [
     SchemaService

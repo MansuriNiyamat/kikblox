@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>JSON Data to store in DB</h2>
+<mat-dialog-content class="mat-typography">
+    <section class="example-full-width">
+            <form [formGroup]="jsonForm">
+           
+                    <div class="row">
+                        <mat-form-field class="form-element">
+                         
+                            <textarea matInput rows="18" formControlName="modelJSON"></textarea>
+                         
+                        </mat-form-field>
+                    </div>
+                  
+                </form>
+    </section>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button (click)="cancel()" mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="jsonForm.value"  cdkFocusInitial>Submit</button>
+</mat-dialog-actions>

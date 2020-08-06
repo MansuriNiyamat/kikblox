@@ -47,10 +47,12 @@ export class SchemaComponent implements AfterViewInit {
   public diagramModelData = { prop: 'value' };
   public skipsDiagramUpdate = false;
 
-
+  coverwithlouver
   public paletteNodeData: Array<go.ObjectData> = [
     { uuid: '4279ceba1dad', text: 'Door', color: '#eeebe1', size: '200 200', type: 'square', category: 'door' },
-  //  { uuid: '2541ceba1dad', text: 'Cover', color: '#81D4FA', size: '100 200', type: 'rectangle' },
+    { uuid: '2541ceba1dad', text: 'Cover', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'cover' },
+    { uuid: '6549ceba1dad', text: 'Cable Chamber', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'cableChamber' },
+    { uuid: '5231ceba1dad', text: 'Cover with Louver', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'coverwithlouver' },
     { uuid: '3514ceba1dad', text: 'Outer Profile', color: '#81D4FA', isGroup: true, size: '500 1000', type: 'rectangle', category: 'outerProfile', selectedOption: null },
   ];
 
@@ -123,13 +125,16 @@ export class SchemaComponent implements AfterViewInit {
       grp.isHighlighted = show && grp.canAddMembers(tool.draggingParts);
       return grp.isHighlighted;
     }
-   const img = new Image(1000, 1000);
-    img.src = 'assets/door2.jpg';
-   const patternBrush = $(go.Brush, 'Pattern', { pattern: img });
+   const doorImage = new Image(1000, 1000);
+   doorImage.src = 'assets/door2.jpg';
+   const doorImageBrush = $(go.Brush, 'Pattern', { pattern: doorImage });
+
+   const louverImage = new Image(1000, 1000);
+   louverImage.src = 'assets/louver.jpg';
+   const louverImageBrush = $(go.Brush, 'Pattern', { pattern: louverImage });
 
     // define the Node template
-    dia.nodeTemplate =
-      $(go.Node, 'Auto',
+    dia.nodeTemplateMap.add('door', $(go.Node, 'Auto',
         {
           resizable: true, resizeObjectName: 'SHAPE',
           // because the gridSnapCellSpot is Center, offset the Node's location
@@ -154,7 +159,7 @@ export class SchemaComponent implements AfterViewInit {
         $(go.Shape, 'Rectangle',
           {
             name: 'SHAPE',
-            fill: patternBrush,
+            fill: doorImageBrush,
             minSize: new go.Size(100, 100),
             desiredSize: new go.Size(100, 100),  // initially 1x1 cell
             strokeWidth: 7
@@ -167,11 +172,151 @@ export class SchemaComponent implements AfterViewInit {
             alignment: go.Spot.Center,
             editable: true,
             margin: 5,
-            font: 'bold 12px sans-serif',
+            font: 'bold 36px sans-serif',
             stroke: '#404040'
           },
           new go.Binding('text', 'text').makeTwoWay())
-      );  // end Node
+      ));  // end Node
+
+
+
+       // define the Node template
+    dia.nodeTemplateMap.add('cover', $(go.Node, 'Auto',
+    {
+      resizable: true, resizeObjectName: 'SHAPE',
+      // because the gridSnapCellSpot is Center, offset the Node's location
+      locationSpot: new go.Spot(0, 0, 50, 50),
+      // provide a visual warning about dropping anything onto an "item"
+      mouseDragEnter: (e, node: any) => {
+        e.handled = true;
+       // node.findObject('SHAPE').fill = 'red';
+        e.diagram.currentCursor = 'not-allowed';
+        highlightGroup(node.containingGroup, false);
+      },
+      mouseDragLeave: (e, node: any) => {
+        node.updateTargetBindings();
+      },
+      mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+        node.diagram.currentTool.doCancel();
+      }
+    },
+    // always save/load the point that is the top-left corner of the node, not the location
+    new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+    // this is the primary thing people see
+    $(go.Shape, 'Rectangle',
+      {
+        name: 'SHAPE',
+        fill: doorImageBrush,
+        minSize: new go.Size(100, 100),
+        desiredSize: new go.Size(100, 100),  // initially 1x1 cell
+        strokeWidth: 7
+      },
+     // new go.Binding('fill', 'color'),
+      new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)),
+    // with the textual key in the middle
+    $(go.TextBlock,
+      {
+        alignment: go.Spot.Center,
+        editable: true,
+        margin: 5,
+        font: 'bold 36px sans-serif',
+        stroke: '#404040'
+      },
+      new go.Binding('text', 'text').makeTwoWay())
+  ));  // end Node
+
+
+
+   // define the Node template
+   dia.nodeTemplateMap.add('cableChamber', $(go.Node, 'Auto',
+   {
+     resizable: true, resizeObjectName: 'SHAPE',
+     // because the gridSnapCellSpot is Center, offset the Node's location
+     locationSpot: new go.Spot(0, 0, 50, 50),
+     // provide a visual warning about dropping anything onto an "item"
+     mouseDragEnter: (e, node: any) => {
+       e.handled = true;
+      // node.findObject('SHAPE').fill = 'red';
+       e.diagram.currentCursor = 'not-allowed';
+       highlightGroup(node.containingGroup, false);
+     },
+     mouseDragLeave: (e, node: any) => {
+       node.updateTargetBindings();
+     },
+     mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+       node.diagram.currentTool.doCancel();
+     }
+   },
+   // always save/load the point that is the top-left corner of the node, not the location
+   new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+   // this is the primary thing people see
+   $(go.Shape, 'Rectangle',
+     {
+       name: 'SHAPE',
+       fill: doorImageBrush,
+       minSize: new go.Size(100, 100),
+       desiredSize: new go.Size(100, 100),  // initially 1x1 cell
+       strokeWidth: 7
+     },
+    // new go.Binding('fill', 'color'),
+     new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)),
+   // with the textual key in the middle
+   $(go.TextBlock,
+     {
+       alignment: go.Spot.Center,
+       editable: true,
+       margin: 5,
+       font: 'bold 36px sans-serif',
+       stroke: '#404040'
+     },
+     new go.Binding('text', 'text').makeTwoWay())
+ ));  // end Node
+
+
+  // define the Node template
+  dia.nodeTemplateMap.add('coverwithlouver', $(go.Node, 'Auto',
+  {
+    resizable: true, resizeObjectName: 'SHAPE',
+    // because the gridSnapCellSpot is Center, offset the Node's location
+    locationSpot: new go.Spot(0, 0, 50, 50),
+    // provide a visual warning about dropping anything onto an "item"
+    mouseDragEnter: (e, node: any) => {
+      e.handled = true;
+     // node.findObject('SHAPE').fill = 'red';
+      e.diagram.currentCursor = 'not-allowed';
+      highlightGroup(node.containingGroup, false);
+    },
+    mouseDragLeave: (e, node: any) => {
+      node.updateTargetBindings();
+    },
+    mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+      node.diagram.currentTool.doCancel();
+    }
+  },
+  // always save/load the point that is the top-left corner of the node, not the location
+  new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+  // this is the primary thing people see
+  $(go.Shape, 'Rectangle',
+    {
+      name: 'SHAPE',
+      fill: louverImageBrush,
+      minSize: new go.Size(100, 100),
+      desiredSize: new go.Size(100, 100),  // initially 1x1 cell
+      strokeWidth: 7
+    },
+   // new go.Binding('fill', 'color'),
+    new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)),
+  // with the textual key in the middle
+  $(go.TextBlock,
+    {
+      alignment: go.Spot.Center,
+      editable: true,
+      margin: 5,
+      font: 'bold 20px sans-serif',
+      stroke: 'white'
+    },
+    new go.Binding('text', 'text').makeTwoWay())
+));  // end Node
 
 
     const groupFill = 'rgba(128,128,128,0.2)';
@@ -218,7 +363,15 @@ export class SchemaComponent implements AfterViewInit {
             maxSize: new go.Size(NaN, 100)
           },
           new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify),
-        ),
+        ),$(go.TextBlock,
+          {
+            alignment: go.Spot.Center,
+            editable: true,
+            margin: 5,
+            font: 'bold 36px sans-serif',
+            stroke: '#404040'
+          },
+          new go.Binding('text', 'text').makeTwoWay())
       ));
 
     dia.commandHandler.memberValidation = (grp, node) => {
@@ -535,6 +688,18 @@ export class SchemaComponent implements AfterViewInit {
         n.data.key = undefined;
       });
       const node = e.diagram.selection.first();
+      if (node.data.category === 'outerProfile') {
+        const dialogRef = this.dialog.open(OuterProfiledialogComponent, {
+          data: node.data,
+          width: '70em',
+          height: '50em'
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          this.myDiagramComponent.diagram.model.startTransaction('deleted node');
+          this.myDiagramComponent.diagram.model.setDataProperty(node.data, 'selectedOption', result);
+          this.myDiagramComponent.diagram.model.commitTransaction('deleted node');
+        });
+      }
     });
     this.myDiagramComponent.diagram.addDiagramListener('ObjectDoubleClicked', (e) => {
       const node = e.diagram.selection.first();
@@ -565,11 +730,15 @@ export class SchemaComponent implements AfterViewInit {
   } // end ngAfterViewInit
 
   outerPanelCalc() {
-    if (this.outerProfileSelectionFlag) {
-      let outerTable = [];
-      const size = this.outerProfileSelectionFlag.size.split(' ');
-      const selectedOpt = this.outerProfileSelectionFlag.selectedOption;
-      outerTable.push(
+
+    const model =  this.myDiagramComponent.diagram.model.nodeDataArray;
+    console.log(model);
+    const outerTable = [];
+    model.forEach(element => {
+      if(element.category === 'outerProfile') {
+        const size = element.size.split(' ');
+        const selectedOpt = element.selectedOption;
+        outerTable.push(
         { componentName: 'Outer Profile', placement: '', width: size[0], height: '', component: '', busbar: '', total: '', qty: 4},
         { componentName: 'Outer Profile', placement: '', width: '', height: size[1], component: '', busbar: '', total: '', qty: 4},
         { componentName: 'Outer Profile - Depth', placement: '', width: '', height: '', component: '', busbar: '', total: selectedOpt.option.total, qty: 4},
@@ -582,7 +751,76 @@ export class SchemaComponent implements AfterViewInit {
         { componentName: 'Axial Corner Module', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 8},
         { componentName: 'Allen Bolts and Nuts(M8*20)', placement: '', width: '', height: '', component: '', busbar: '', total: '', qty: 4},
       );
-      
+      } else if(element.category === 'door') {
+        const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
+        const size = element.size.split(' ');
+        const selectedOpt = group.data.selectedOption;
+        let compoDepth;
+        if(selectedOpt){
+          compoDepth = selectedOpt.option.depth;
+        }
+        outerTable.push(
+          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Door', placement: 'Door', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Mounting Plate', placement: 'MOunting Plate', width: compoDepth, height: '', component: '', busbar: '', total: '', qty: 1},
+          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+        );
+      } else if(element.category === 'cover') {
+        const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
+        const size = element.size.split(' ');
+        const selectedOpt = group.data.selectedOption;
+        let compoDepth;
+        if(selectedOpt){
+          compoDepth = selectedOpt.option.depth;
+        }
+        outerTable.push(
+          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Cover', placement: 'Cover', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+        );
+      } else if(element.category === 'cableChamber') {
+        const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
+        const size = element.size.split(' ');
+        const selectedOpt = group.data.selectedOption;
+        let compoDepth;
+        if(selectedOpt){
+          compoDepth = selectedOpt.option.depth;
+        }
+        outerTable.push(
+          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Cable Chamber', placement: '', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+        );
+      } else if(element.category === 'coverwithlouver') {
+        const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
+        const size = element.size.split(' ');
+        const selectedOpt = group.data.selectedOption;
+        let compoDepth;
+        if(selectedOpt){
+          compoDepth = selectedOpt.option.depth;
+        }
+        outerTable.push(
+          { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' ,component: '', busbar: '', total: '', qty: 4},
+          { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '',component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Cover with Louver', placement: '', width: size[0], height: size[1], component: '', busbar: '', total: '', qty: 1},
+          { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, component: '', busbar: '', total: '', qty: 2},
+          { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], component: '', busbar: '', total: '', qty: ''},
+        );
+      }
+    });
+  
       const dialogRef = this.dialog.open(DialogComponent, {
         data: {type: 'outerPanel', data: outerTable},
         width: '70em',
@@ -591,11 +829,6 @@ export class SchemaComponent implements AfterViewInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('Table Closed')
       });
-
-
-    } else {
-      alert('please select outer profile first or select depth options');
-    }
   }
 
 

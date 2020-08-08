@@ -49,6 +49,8 @@ export class SchemaComponent implements AfterViewInit {
 
   coverwithlouver
   public paletteNodeData: Array<go.ObjectData> = [
+    { uuid: '9874ceba1dad', text: '', color: 'red', size: '20 500', type: 'square', category: 'busbarx' },
+    { uuid: '5432ceba1dad', text: '', color: 'red', size: '400 20', type: 'square', category: 'busbary' },
     { uuid: '4279ceba1dad', text: 'Door', color: '#eeebe1', size: '200 200', type: 'square', category: 'door' },
     { uuid: '2541ceba1dad', text: 'Cover', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'cover' },
     { uuid: '6549ceba1dad', text: 'Cable Chamber', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'cableChamber' },
@@ -133,9 +135,104 @@ export class SchemaComponent implements AfterViewInit {
    louverImage.src = 'assets/louver.jpg';
    const louverImageBrush = $(go.Brush, 'Pattern', { pattern: louverImage });
 
+
+   dia.nodeTemplateMap.add('busbarx', $(go.Node, 'Auto',
+   {
+     zOrder: 100,
+     resizable: true, resizeObjectName: 'SHAPE',
+     // because the gridSnapCellSpot is Center, offset the Node's location
+     locationSpot: new go.Spot(0, 0, 10, 0),
+     // provide a visual warning about dropping anything onto an "item"
+    //  mouseDragEnter: (e, node: any) => {
+    //    e.handled = true;
+    //   // node.findObject('SHAPE').fill = 'red';
+    //    e.diagram.currentCursor = 'not-allowed';
+    //    highlightGroup(node.containingGroup, false);
+    //  },
+    //  mouseDragLeave: (e, node: any) => {
+    //    node.updateTargetBindings();
+    //  },
+    //  mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+    //    node.diagram.currentTool.doCancel();
+    //  }
+   },
+   // always save/load the point that is the top-left corner of the node, not the location
+   new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+   // this is the primary thing people see
+   $(go.Shape, 'Rectangle',
+     {
+       name: 'SHAPE',
+       fill: 'red',
+       minSize: new go.Size(20, 100),
+       desiredSize: new go.Size(20, 200),  // initially 1x1 cell
+       maxSize: new go.Size(20, NaN),  // initially 1x1 cell
+       strokeWidth: 2
+     },
+    // new go.Binding('fill', 'color'),
+     new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)),
+   // with the textual key in the middle
+   $(go.TextBlock,
+     {
+       alignment: go.Spot.Center,
+       editable: true,
+       margin: 5,
+       font: 'bold 20px sans-serif',
+       stroke: '#404040'
+     },
+     new go.Binding('text', 'text').makeTwoWay())
+ ));  // end Node
+
+
+
+ dia.nodeTemplateMap.add('busbary', $(go.Node, 'Auto',
+   {
+     zOrder: 99,
+     resizable: true, resizeObjectName: 'SHAPE',
+     // because the gridSnapCellSpot is Center, offset the Node's location
+     locationSpot: new go.Spot(0, 0, 10, 10),
+     // provide a visual warning about dropping anything onto an "item"
+    //  mouseDragEnter: (e, node: any) => {
+    //    e.handled = true;
+    //   // node.findObject('SHAPE').fill = 'red';
+    //    e.diagram.currentCursor = 'not-allowed';
+    //    highlightGroup(node.containingGroup, false);
+    //  },
+    //  mouseDragLeave: (e, node: any) => {
+    //    node.updateTargetBindings();
+    //  },
+    //  mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+    //    node.diagram.currentTool.doCancel();
+    //  }
+   },
+   // always save/load the point that is the top-left corner of the node, not the location
+   new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+   // this is the primary thing people see
+   $(go.Shape, 'Rectangle',
+     {
+       name: 'SHAPE',
+       fill: 'red',
+       minSize: new go.Size(100, 20),
+       desiredSize: new go.Size(200, 20),  // initially 1x1 cell
+       maxSize: new go.Size(NaN, 20),  // initially 1x1 cell
+       strokeWidth: 2
+     },
+    // new go.Binding('fill', 'color'),
+     new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify)),
+   // with the textual key in the middle
+   $(go.TextBlock,
+     {
+       alignment: go.Spot.Center,
+       editable: true,
+       margin: 5,
+       font: 'bold 20px sans-serif',
+       stroke: '#404040'
+     },
+     new go.Binding('text', 'text').makeTwoWay())
+ ));  // end Node
     // define the Node template
     dia.nodeTemplateMap.add('door', $(go.Node, 'Auto',
         {
+          zOrder:1,
           resizable: true, resizeObjectName: 'SHAPE',
           // because the gridSnapCellSpot is Center, offset the Node's location
           locationSpot: new go.Spot(0, 0, 50, 50),
@@ -150,7 +247,12 @@ export class SchemaComponent implements AfterViewInit {
             node.updateTargetBindings();
           },
           mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+          const node1 = node.diagram.selection.first();
+          if(node1.data.category === 'busbary' || node1.data.category === 'busbarx') {
+      
+          } else {
             node.diagram.currentTool.doCancel();
+          }
           }
         },
         // always save/load the point that is the top-left corner of the node, not the location
@@ -183,6 +285,7 @@ export class SchemaComponent implements AfterViewInit {
        // define the Node template
     dia.nodeTemplateMap.add('cover', $(go.Node, 'Auto',
     {
+      zOrder:1,
       resizable: true, resizeObjectName: 'SHAPE',
       // because the gridSnapCellSpot is Center, offset the Node's location
       locationSpot: new go.Spot(0, 0, 50, 50),
@@ -197,7 +300,12 @@ export class SchemaComponent implements AfterViewInit {
         node.updateTargetBindings();
       },
       mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+      const node1 = node.diagram.selection.first();
+      if(node1.data.category === 'busbary' || node1.data.category === 'busbarx') {
+  
+      } else {
         node.diagram.currentTool.doCancel();
+      }
       }
     },
     // always save/load the point that is the top-left corner of the node, not the location
@@ -230,6 +338,7 @@ export class SchemaComponent implements AfterViewInit {
    // define the Node template
    dia.nodeTemplateMap.add('cableChamber', $(go.Node, 'Auto',
    {
+    zOrder:1,
      resizable: true, resizeObjectName: 'SHAPE',
      // because the gridSnapCellSpot is Center, offset the Node's location
      locationSpot: new go.Spot(0, 0, 50, 50),
@@ -244,7 +353,12 @@ export class SchemaComponent implements AfterViewInit {
        node.updateTargetBindings();
      },
      mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+     const node1 = node.diagram.selection.first();
+     if(node1.data.category === 'busbary' || node1.data.category === 'busbarx') {
+ 
+     } else {
        node.diagram.currentTool.doCancel();
+     }
      }
    },
    // always save/load the point that is the top-left corner of the node, not the location
@@ -276,6 +390,7 @@ export class SchemaComponent implements AfterViewInit {
   // define the Node template
   dia.nodeTemplateMap.add('coverwithlouver', $(go.Node, 'Auto',
   {
+    zOrder:1,
     resizable: true, resizeObjectName: 'SHAPE',
     // because the gridSnapCellSpot is Center, offset the Node's location
     locationSpot: new go.Spot(0, 0, 50, 50),
@@ -290,7 +405,12 @@ export class SchemaComponent implements AfterViewInit {
       node.updateTargetBindings();
     },
     mouseDrop: (e, node) => {  // disallow dropping anything onto an "item"
+    const node1 = node.diagram.selection.first();
+    if(node1.data.category === 'busbary' || node1.data.category === 'busbarx') {
+
+    } else {
       node.diagram.currentTool.doCancel();
+    }
     }
   },
   // always save/load the point that is the top-left corner of the node, not the location
@@ -688,6 +808,7 @@ export class SchemaComponent implements AfterViewInit {
         n.data.key = undefined;
       });
       const node = e.diagram.selection.first();
+      if(!node) { return; }
       if (node.data.category === 'outerProfile') {
         const dialogRef = this.dialog.open(OuterProfiledialogComponent, {
           data: node.data,

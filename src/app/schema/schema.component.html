@@ -5,24 +5,38 @@
         <span class="example-spacer"></span>
         
             <!-- <button class="example-button"  mat-raised-button (click)="doorCalc()" >Door Calc</button> -->
+            <button class="example-button"  mat-raised-button (click)="depthSelection()" >Depth Selection</button>
             <button class="example-button"  mat-raised-button (click)="outerPanelCalc()" >Calculation</button>
             <button class="example-button"  mat-raised-button  (click)="save()">Save</button>
     </mat-toolbar>
     
      <div  class="diagram">
-    <mat-grid-list cols="12" rowHeight="100%">
-      <mat-grid-tile colspan="2" rowspan="1"><div #paletteDiv id="paletteDiv" class="paletteDiv">   
+    <mat-grid-list cols="12" rowHeight="33%">
+      <mat-grid-tile colspan="2" rowspan="3"><div #paletteDiv id="paletteDiv" class="paletteDiv">   
          <gojs-palette #myPalette [initPalette]='initPalette' [divClassName]='paletteDivClassName' [nodeDataArray]='paletteNodeData'
         [linkDataArray]='paletteLinkData' [modelData]='paletteModelData' (modelChange)='paletteModelChange($event)'></gojs-palette>
       </div>
       <div #overViewDiv id="overViewDiv"   class="overViewDiv"> <gojs-overview #myOverview [initOverview]='initOverview' [divClassName]='oDivClassName' [observedDiagram]='observedDiagram'></gojs-overview></div>
     </mat-grid-tile>
-      <mat-grid-tile colspan="10" rowspan="1"> <div #diagramDiv id="diagramDiv" class="diagramDiv"> 
+      <mat-grid-tile colspan="10" rowspan="2"> <div #diagramDiv id="diagramDiv" class="diagramDiv"> 
         <gojs-diagram #myDiagram [initDiagram]='initDiagram' [nodeDataArray]='diagramNodeData' [linkDataArray]='diagramLinkData'
         [divClassName]='diagramDivClassName' (modelChange)='diagramModelChange($event)'>
       </gojs-diagram>
     </div>
   </mat-grid-tile>
+
+  <mat-grid-tile colspan="8" rowspan="1"> 
+
+    <div  id="bottomDiagramDiv" class="bottomDiagramDiv"> 
+      <app-bottom-view [modelData]='bottomData' [depthOption]='depthOption'></app-bottom-view>
+  </div>
+  
+
+</mat-grid-tile>
+<mat-grid-tile colspan="2" rowspan="1"> <div > 
+side view
+</div>
+</mat-grid-tile>
       <!-- <mat-grid-tile colspan="2" rowspan="1">  </mat-grid-tile> -->
     </mat-grid-list>
     </div> 

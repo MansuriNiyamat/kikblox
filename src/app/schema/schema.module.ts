@@ -6,13 +6,15 @@ import { SchemaComponent } from './schema.component';
 import {OuterProfiledialogComponent} from './outerProfile/outerProfiledialog.component';
 import {DialogComponent} from './dialog/dialog.component';
 import {JSONDialogComponent} from './jsondialog/dialog.component';
+import { BottomViewComponent } from './bottom-view/bottom-view.component';
 
 @NgModule({
   declarations: [
     SchemaComponent,
     OuterProfiledialogComponent,
     DialogComponent,
-    JSONDialogComponent
+    JSONDialogComponent,
+    BottomViewComponent
   ],
   imports: [
     CommonSharedModule,

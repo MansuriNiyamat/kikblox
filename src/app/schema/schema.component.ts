@@ -27,8 +27,11 @@ export class SchemaComponent implements AfterViewInit {
   rectanglex;
   rectangley;
   finalTable = [];
-  outerProfileSelectionFlag = null;
-  doorSelectionFlag = null;
+
+  bottomData;
+  depthOption;
+
+  
 
   private _jsonURL = 'assets/data.json';
 
@@ -47,7 +50,7 @@ export class SchemaComponent implements AfterViewInit {
   public diagramModelData = { prop: 'value' };
   public skipsDiagramUpdate = false;
 
-  coverwithlouver
+  
   public paletteNodeData: Array<go.ObjectData> = [
     { uuid: '9874ceba1dad', text: '', color: 'red', size: '20 500', type: 'square', category: 'busbarx' },
     { uuid: '5432ceba1dad', text: '', color: 'red', size: '400 20', type: 'square', category: 'busbary' },
@@ -55,7 +58,7 @@ export class SchemaComponent implements AfterViewInit {
     { uuid: '2541ceba1dad', text: 'Cover', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'cover' },
     { uuid: '6549ceba1dad', text: 'Cable Chamber', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'cableChamber' },
     { uuid: '5231ceba1dad', text: 'Cover with Louver', color: '#eeebe1', size: '200 200', type: 'rectangle', category: 'coverwithlouver' },
-    { uuid: '3514ceba1dad', text: 'Outer Profile', color: '#81D4FA', isGroup: true, size: '500 1000', type: 'rectangle', category: 'outerProfile', selectedOption: null },
+    { uuid: '3514ceba1dad', text: 'Outer Profile', color: '#81D4FA', isGroup: true, size: '500 1000', type: 'rectangle', category: 'outerProfile', selectedOption: null, pos: '0 0' },
   ];
 
   public paletteLinkData: Array<go.ObjectData> = [
@@ -456,6 +459,7 @@ export class SchemaComponent implements AfterViewInit {
         },
         // always save/load the point that is the top-left corner of the node, not the location
         new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+        new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
         { // what to do when a drag-over or a drag-drop occurs on a Group
           mouseDragEnter: (e, grp, prev) => {
             if (!highlightGroup(grp, true)) e.diagram.currentCursor = 'not-allowed'; else e.diagram.currentCursor = '';
@@ -543,15 +547,20 @@ export class SchemaComponent implements AfterViewInit {
     return dia;
   }
   // When the diagram model changes, update app data to reflect those changes
-  public diagramModelChange = function (changes: go.IncrementalData) {
+  public diagramModelChange(changes: go.IncrementalData) {
+   // console.log(this.myDiagramComponent.diagram.model.nodeDataArray);
+
+    this.bottomData ={ change: changes, model: this.myDiagramComponent.diagram.model } ;
+
     // when setting state here, be sure to set skipsDiagramUpdate: true since GoJS already has this update
     // (since this is a GoJS model changed listener event function)
     // this way, we don't log an unneeded transaction in the Diagram's undoManager history
-    this.skipsDiagramUpdate = false;
+    this.skipsDiagramUpdate = true;
 
     this.diagramNodeData = DataSyncService.syncNodeData(changes, this.diagramNodeData);
     this.diagramLinkData = DataSyncService.syncLinkData(changes, this.diagramLinkData);
-    this.diagramModelData = DataSyncService.syncModelData(changes, this.diagramModelData);
+   // this.diagramModelData = DataSyncService.syncModelData(changes, this.diagramModelData);
+  //  console.log(this.myDiagramComponent.diagram.model.nodeDataArray);
   };
 
 
@@ -635,7 +644,8 @@ export class SchemaComponent implements AfterViewInit {
           locationSpot: new go.Spot(0, 0, 50, 50),
         },
         // always save/load the point that is the top-left corner of the node, not the location
-       // new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+        new go.Binding('position', 'pos', go.Point.parse).makeTwoWay(go.Point.stringify),
+        new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
         // { // what to do when a drag-over or a drag-drop occurs on a Group
         //   mouseDragEnter: (e, grp, prev) => {
         //     if (!highlightGroup(grp, true)) e.diagram.currentCursor = 'not-allowed'; else e.diagram.currentCursor = '';
@@ -699,6 +709,20 @@ export class SchemaComponent implements AfterViewInit {
     });
   }
 
+
+  public depthSelection() {
+    const dialogRef = this.dialog.open(OuterProfiledialogComponent, {
+      data: '',
+      width: '70em',
+      height: '50em'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.depthOption = result;
+      // this.myDiagramComponent.diagram.model.startTransaction('deleted node');
+      // this.myDiagramComponent.diagram.model.setDataProperty(node.data, 'selectedOption', result);
+      // this.myDiagramComponent.diagram.model.commitTransaction('deleted node');
+    });
+  }
   public calculate() {
     this.finalTable = [];
     const jsonData = this.myDiagramComponent.diagram.model.nodeDataArray;
@@ -808,18 +832,16 @@ export class SchemaComponent implements AfterViewInit {
         n.data.key = undefined;
       });
       const node = e.diagram.selection.first();
-      if(!node) { return; }
+      if(!node) { return }
       if (node.data.category === 'outerProfile') {
-        const dialogRef = this.dialog.open(OuterProfiledialogComponent, {
-          data: node.data,
-          width: '70em',
-          height: '50em'
-        });
-        dialogRef.afterClosed().subscribe(result => {
-          this.myDiagramComponent.diagram.model.startTransaction('deleted node');
-          this.myDiagramComponent.diagram.model.setDataProperty(node.data, 'selectedOption', result);
-          this.myDiagramComponent.diagram.model.commitTransaction('deleted node');
-        });
+        if(this.depthOption) {
+        
+        } else {
+          alert('please select depth first');
+          this.myDiagramComponent.diagram.remove(node);
+          return;
+        }
+      
       }
     });
     this.myDiagramComponent.diagram.addDiagramListener('ObjectDoubleClicked', (e) => {
@@ -831,6 +853,8 @@ export class SchemaComponent implements AfterViewInit {
           height: '50em'
         });
         dialogRef.afterClosed().subscribe(result => {
+          this.depthOption = result;
+
           this.myDiagramComponent.diagram.model.startTransaction('deleted node');
           this.myDiagramComponent.diagram.model.setDataProperty(node.data, 'selectedOption', result);
           this.myDiagramComponent.diagram.model.commitTransaction('deleted node');
@@ -841,11 +865,11 @@ export class SchemaComponent implements AfterViewInit {
       const node = e.diagram.selection.first();
 
       if (node.data.category === 'outerProfile') {
-        this.outerProfileSelectionFlag = node.data;
+     //   this.outerProfileSelectionFlag = node.data;
       } else if(node.data.category === 'door') {
-        this.doorSelectionFlag = node.data;
+      //  this.doorSelectionFlag = node.data;
       } else { 
-        this.outerProfileSelectionFlag = null;
+      //  this.outerProfileSelectionFlag = null;
       }
     });
   } // end ngAfterViewInit
@@ -853,12 +877,12 @@ export class SchemaComponent implements AfterViewInit {
   outerPanelCalc() {
 
     const model =  this.myDiagramComponent.diagram.model.nodeDataArray;
-    console.log(model);
+  //  console.log(model);
     const outerTable = [];
     model.forEach(element => {
       if(element.category === 'outerProfile') {
         const size = element.size.split(' ');
-        const selectedOpt = element.selectedOption;
+        const selectedOpt = this.depthOption;
         outerTable.push(
         {name : element.text, componentName: 'Outer Profile', placement: '', width: size[0], height: '', component: '', busbar: '', total: '', qty: 4},
         {name : element.text, componentName: 'Outer Profile', placement: '', width: '', height: size[1], component: '', busbar: '', total: '', qty: 4},
@@ -875,7 +899,7 @@ export class SchemaComponent implements AfterViewInit {
       } else if(element.category === 'door') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
         const size = element.size.split(' ');
-        const selectedOpt = group.data.selectedOption;
+        const selectedOpt = this.depthOption;
         let compoDepth;
         if(selectedOpt){
           compoDepth = selectedOpt.option.depth;
@@ -893,7 +917,7 @@ export class SchemaComponent implements AfterViewInit {
       } else if(element.category === 'cover') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
         const size = element.size.split(' ');
-        const selectedOpt = group.data.selectedOption;
+        const selectedOpt = this.depthOption;
         let compoDepth;
         if(selectedOpt){
           compoDepth = selectedOpt.option.depth;
@@ -908,7 +932,8 @@ export class SchemaComponent implements AfterViewInit {
       } else if(element.category === 'cableChamber') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
         const size = element.size.split(' ');
-        const selectedOpt = group.data.selectedOption;
+      //  const selectedOpt = group.data.selectedOption;
+        const selectedOpt =this.depthOption;
         let compoDepth;
         if(selectedOpt){
           compoDepth = selectedOpt.option.depth;
@@ -925,7 +950,7 @@ export class SchemaComponent implements AfterViewInit {
       } else if(element.category === 'coverwithlouver') {
         const group =  this.myDiagramComponent.diagram.findNodeForKey(element.group);
         const size = element.size.split(' ');
-        const selectedOpt = group.data.selectedOption;
+        const selectedOpt = this.depthOption;
         let compoDepth;
         if(selectedOpt){
           compoDepth = selectedOpt.option.depth;
@@ -953,6 +978,8 @@ export class SchemaComponent implements AfterViewInit {
   }
 
   save() {
+    this.bottomData = this.myDiagramComponent.diagram.model.nodeDataArray;
+
     const dialogRef = this.dialog.open(JSONDialogComponent, {
       data: this.myDiagramComponent.diagram.model.toJson(),
       width: '50em',
@@ -962,40 +989,40 @@ export class SchemaComponent implements AfterViewInit {
       
     });
   }
-  doorCalc() {
-    if (this.doorSelectionFlag) {
-      let outerTable = [];
-      const group =  this.myDiagramComponent.diagram.findNodeForKey(this.doorSelectionFlag.group);
-      const size = this.doorSelectionFlag.size.split(' ');
-      const selectedOpt = group.data.selectedOption;
-      let compoDepth;
-      if(selectedOpt){
-        compoDepth = selectedOpt.option.depth;
-      }
-      outerTable.push(
-        { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '', total: '', qty: 2},
-        { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' , total: '', qty: 4},
-        { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '', total: '', qty: 2},
-        { componentName: 'Door', placement: 'Door', width: size[0], height: size[1], total: '', qty: 1},
-        { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, total: '', qty: 2},
-        { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, total: '', qty: 2},
-        { componentName: 'Mounting Plate', placement: 'MOunting Plate', width: compoDepth, height: '', total: '', qty: 1},
-        { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], total: '', qty: ''},
-      );
-      const dialogRef = this.dialog.open(DialogComponent, {
-        data: {type: 'door', data: outerTable},
-        width: '70em',
-        height: '40em'
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('Table Closed')
-      });
+  // doorCalc() {
+  //   if (this.doorSelectionFlag) {
+  //     let outerTable = [];
+  //     const group =  this.myDiagramComponent.diagram.findNodeForKey(this.doorSelectionFlag.group);
+  //     const size = this.doorSelectionFlag.size.split(' ');
+  //     const selectedOpt = group.data.selectedOption;
+  //     let compoDepth;
+  //     if(selectedOpt){
+  //       compoDepth = selectedOpt.option.depth;
+  //     }
+  //     outerTable.push(
+  //       { componentName: 'Inner Profile L', placement: 'Inner Profile', width: size[0], height: '', total: '', qty: 2},
+  //       { componentName: 'Inner Profile H', placement: 'Inner Profile', width: size[1], height: '' , total: '', qty: 4},
+  //       { componentName: 'Inner Profile D', placement: 'Inner Profile', width: compoDepth, height: '', total: '', qty: 2},
+  //       { componentName: 'Door', placement: 'Door', width: size[0], height: size[1], total: '', qty: 1},
+  //       { componentName: 'Sepration Plate Sides', placement: 'Sepration Plate', width: size[1], height: compoDepth, total: '', qty: 2},
+  //       { componentName: 'Sepration Plate Top Bottom', placement: 'Sepration Plate', width: size[0], height: compoDepth, total: '', qty: 2},
+  //       { componentName: 'Mounting Plate', placement: 'MOunting Plate', width: compoDepth, height: '', total: '', qty: 1},
+  //       { componentName: 'Allen Bolts and Nuts(M8*20)', placement: 'Accessories', width: size[0], height: size[0], total: '', qty: ''},
+  //     );
+  //     const dialogRef = this.dialog.open(DialogComponent, {
+  //       data: {type: 'door', data: outerTable},
+  //       width: '70em',
+  //       height: '40em'
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       console.log('Table Closed')
+  //     });
 
 
-    } else {
-      alert('please select outer profile first or select depth options');
-    }
-  }
+  //   } else {
+  //     alert('please select outer profile first or select depth options');
+  //   }
+  // }
 
   public handleInspectorChange(newNodeData) {
     const uuid = newNodeData.uuid;

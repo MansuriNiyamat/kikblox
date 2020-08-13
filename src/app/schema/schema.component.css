@@ -80,6 +80,13 @@ mat-nav-list {
  border: 1px dashed black; 
 }
 
+
+.bottomDiagramDiv {
+  width: 100%;
+  height: 100%;
+ border: 1px dashed black; 
+}
+
 .infoDiv {
   width: 100%;
   height: 100%;
